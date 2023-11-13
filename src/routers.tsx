@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import React from "react";
 
 import SplashScreen from "./pages/splash_screen/index";
+import FeaturePreview from "./pages/feature_preview/index";
 
 const router = createBrowserRouter([
     {
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/feature/preview",
+        element: <FeaturePreview />
     }
 ]);
 
