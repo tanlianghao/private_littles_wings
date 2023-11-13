@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import './index.scss';
 
@@ -14,7 +14,11 @@ const FeaturePreview = () => {
     ];
 
     const elementRef = useRef(null);
-    new WaterFallView().layout();
+    
+    useEffect(() => {
+        new WaterFallView().layout(elementRef);
+    })
+
     return (
         <>
             <div className='mainBody'>
@@ -38,7 +42,57 @@ const FeaturePreview = () => {
 export default FeaturePreview;
 
 class WaterFallView {
-    layout() {
+    cacheHeightByItem = [];
+
+    layout(ref: React.MutableRefObject<any>) {
+        let childrens = ref.current.children;
+        let containerWidth = ref.current.offsetWidth;
+        let containerHeight = ref.current.offsetHeight;
+        const columnNo = 3;
+        const space = 5.0;
+        let top = 0, left = 0;
+
+        let imageWidth = (containerWidth / columnNo) - space;
+
+        for (let i = 0; i < childrens.length; i++) {
+            let itemDom = childrens[i] as HTMLElement;
+            
+            if (i < columnNo) {
+                left = (itemDom.offsetWidth + space) * i;
+                this.cacheHeightByItem.push(itemDom.offsetHeight);
+            } else {
+                const index = this.getMinHeightIndex();
+                left = childrens[index].offsetLeft;
+                top = childrens[index].offsetHeight + space;
+                this.cacheHeightByItem[index] += top;
+                
+                let currentItemPostion = top + itemDom.offsetHeight;
+
+                if (currentItemPostion < containerHeight) {
+                    let itemHeight = containerHeight - top;
+                    itemDom.style.height = itemHeight + 'px';
+                }
+            }
+            itemDom.style.top = top + 'px';
+            itemDom.style.left = left + 'px';
+            itemDom.style.width = imageWidth + 'px';
+        }
+
+        
         console.log(123123);
+    }
+
+    getMinHeightIndex() {
+        let minIndex = 0;
+        let currentMinValue = this.cacheHeightByItem[minIndex];
+
+
+        for (let i = 0; i < this.cacheHeightByItem.length; i++) {
+            if (currentMinValue > this.cacheHeightByItem[i]) {
+                minIndex = i;
+                currentMinValue = this.cacheHeightByItem[i];
+            }
+        }
+        return minIndex;
     }
 }
