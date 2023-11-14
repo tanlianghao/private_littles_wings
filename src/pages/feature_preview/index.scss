@@ -1,9 +1,11 @@
 .swiperBody {
     .waterfallsFlow {
-        position: relative;
         height: 419px;
+        width: 100vw;
+        position: relative;
         img {
             position: absolute;
+            width: calc((100vw - 5vw) / 3);
         }
     }
 }

@@ -14,10 +14,10 @@ const FeaturePreview = () => {
     ];
 
     const elementRef = useRef(null);
-    
+
     useEffect(() => {
         new WaterFallView().layout(elementRef);
-    })
+    });
 
     return (
         <>
@@ -30,7 +30,7 @@ const FeaturePreview = () => {
                             );
                         })}
                     </div>
-                    <h2>Find your favourite events here</h2>
+                    <h1>Find your favourite events here</h1>
                     <p>The customer is very important, the customer will be followed by the customer.</p>
                 </div>
                 <button>Next</button>
@@ -54,32 +54,31 @@ class WaterFallView {
 
         let imageWidth = (containerWidth / columnNo) - space;
 
-        for (let i = 0; i < childrens.length; i++) {
-            let itemDom = childrens[i] as HTMLElement;
-            
-            if (i < columnNo) {
-                left = (itemDom.offsetWidth + space) * i;
-                this.cacheHeightByItem.push(itemDom.offsetHeight);
-            } else {
-                const index = this.getMinHeightIndex();
-                left = childrens[index].offsetLeft;
-                top = childrens[index].offsetHeight + space;
-                this.cacheHeightByItem[index] += top;
-                
-                let currentItemPostion = top + itemDom.offsetHeight;
+        childrens[0].onload = () => {
+            for (let i = 0; i < childrens.length; i++) {
+                let itemDom = childrens[i] as HTMLElement;
 
-                if (currentItemPostion < containerHeight) {
-                    let itemHeight = containerHeight - top;
-                    itemDom.style.height = itemHeight + 'px';
+                if (i < columnNo) {
+                    left = (imageWidth + space) * i;
+                    this.cacheHeightByItem.push(itemDom.offsetHeight);
+                } else {
+                    const index = this.getMinHeightIndex();
+                    left = childrens[index].offsetLeft;
+                    top = childrens[index].offsetHeight + space;
+                    this.cacheHeightByItem[index] += top;
+                    
+                    let currentItemPostion = top + itemDom.offsetHeight;
+    
+                    if (currentItemPostion < containerHeight) {
+                        let itemHeight = containerHeight - top;
+                        itemDom.style.height = itemHeight + 'px';
+                    }
                 }
+                itemDom.style.top = top + 'px';
+                itemDom.style.left = left + 'px';
             }
-            itemDom.style.top = top + 'px';
-            itemDom.style.left = left + 'px';
-            itemDom.style.width = imageWidth + 'px';
         }
 
-        
-        console.log(123123);
     }
 
     getMinHeightIndex() {

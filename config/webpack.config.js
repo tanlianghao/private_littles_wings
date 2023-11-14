@@ -143,6 +143,16 @@ module.exports = function (webpackEnv) {
                       stage: 3,
                     },
                   ],
+                  require('postcss-px-to-viewport')({
+                    viewportWidth: 360, // 视口宽度，根据设计图的大小
+                    unitPrecision: 6,// 保留小数点
+                    viewportUnit: 'vw', // 单位
+                    selectorBlackList: [], // 排除的类
+                    minPixelValue: 1, // px的最小单位
+                    mediaQuery: false, // 排除媒体查询
+                    landscapeUnit: 'vw', // 横屏单位
+                    fontViewportUnit: 'vw' // 字体属性单位
+                  }),
                   // Adds PostCSS Normalize as the reset css with default options,
                   // so that it honors browserslist config in package.json
                   // which in turn let's users customize the target behavior as per their needs.
@@ -319,7 +329,8 @@ module.exports = function (webpackEnv) {
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
         ...(modules.webpackAliases || {}),
-        '@assets': path.resolve(__dirname, '../src/assets')
+        '@assets': path.resolve(__dirname, '../src/assets'),
+        '@utils': path.resolve(__dirname, '../src/utils'),
       },
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).
