@@ -4,7 +4,6 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
 import router from './routers';
-import 'normalize.css/normalize.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

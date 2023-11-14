@@ -8,4 +8,38 @@
             width: calc((100vw - 5vw) / 3);
         }
     }
+    h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: rgba(37, 19, 26, 1);
+        margin-top: 46px;
+        margin-left: 12px;
+        margin-right: 12px;
+        padding: 0px 40px;
+        text-align: center;
+        line-height: auto;
+    }
+    .content-main{
+        margin: 0 29px;
+        margin-top: 14px;
+        p {
+            font-size: 14px;
+            text-align: center;
+            color: rgba(0, 0, 0, 1);
+            font-weight: lighter;
+            line-height: 1.5;
+        }
+    }
+}
+.nextButton{
+    display: block;
+    border: none;
+    width: 246px;
+    height: 45px;
+    margin: 0 auto;
+    margin-top: 15px;
+    border-radius: 15px;
+    background: rgba(128, 128, 128, 0.5);
+    color: rgba(238, 238, 238, 1);
+    font-size: 18px;
 }

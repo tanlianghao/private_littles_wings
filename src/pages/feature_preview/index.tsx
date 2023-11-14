@@ -31,9 +31,12 @@ const FeaturePreview = () => {
                         })}
                     </div>
                     <h1>Find your favourite events here</h1>
-                    <p>The customer is very important, the customer will be followed by the customer.</p>
+                    <div className='content-main'>
+                        <p>The customer is very important, the</p>
+                        <p>customer will be followed by the customer.</p>
+                    </div>
                 </div>
-                <button>Next</button>
+                <button className='nextButton'>Next</button>
             </div>
         </>
     );
