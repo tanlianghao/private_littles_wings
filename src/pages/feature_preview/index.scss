@@ -1,4 +1,5 @@
 .swiperBody {
+    padding-bottom: 30px;
     .waterfallsFlow {
         height: 419px;
         width: 100vw;
@@ -42,4 +43,19 @@
     background: rgba(128, 128, 128, 0.5);
     color: rgba(238, 238, 238, 1);
     font-size: 18px;
+}
+
+.swiper-pagination-customer-bullet{
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin-left: 4px;
+    border-radius: 100%;
+    background: #8B868833;
+}
+.swiper-pagination-customer-bullet-active{
+    background: #808080;
+    height: 4px;
+    width: 28px;
+    border-radius: 10px;
 }
