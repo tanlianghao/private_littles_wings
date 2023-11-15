@@ -32,7 +32,7 @@
         }
     }
 }
-.nextButton{
+.normal_button{
     display: block;
     border: none;
     width: 246px;
@@ -40,9 +40,15 @@
     margin: 0 auto;
     margin-top: 15px;
     border-radius: 15px;
+    font-size: 18px;
+}
+.nextButton{
     background: rgba(128, 128, 128, 0.5);
     color: rgba(238, 238, 238, 1);
-    font-size: 18px;
+}
+.button_active{
+    background: rgba(128, 128, 128, 1);
+    color: rgba(238, 238, 238, 1);
 }
 
 .swiper-pagination-customer-bullet{

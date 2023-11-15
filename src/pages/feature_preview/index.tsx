@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 // import Swiper and modules styles
@@ -7,6 +7,7 @@ import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 
 import './index.scss';
+import { useNavigate } from 'react-router-dom';
 
 const FeaturePreview = () => {
 	let imageList = [
@@ -20,12 +21,37 @@ const FeaturePreview = () => {
 	];
 
 	let swiperContainer = new Array(3).fill(imageList);
+	let navigator = useNavigate();
+	const cachePreviewIndexs: Array<number> = [];
+	let [isReaded, setIsReaded] = useState<boolean>(false);
 
 	const elementRef = useRef(null);
 
+	// 缓存看过的内容
+	let cacheReadedPreviewHandler = (index: number) => {
+		if (cachePreviewIndexs.includes(index)) {
+			return;
+		}
+		cachePreviewIndexs.push(index);
+
+		if (cachePreviewIndexs.length === swiperContainer.length) {
+			setIsReaded(true);
+		}
+	}
+
+	// next跳转路径
+	function onTapButtonHandler() {
+		if (!isReaded) {
+			console.error('onTapButtonHandler', 'preview no looked')
+			return;
+		}
+
+		navigator('/register/account');
+	}
+
 	useEffect(() => {
 			new WaterFallView().layout(elementRef);
-	});
+	}, []);
 
 	return (
 		<>
@@ -35,6 +61,12 @@ const FeaturePreview = () => {
 					pagination={{ el: '.swiper-pagination', 
 						bulletClass: 'swiper-pagination-customer-bullet',
 						bulletActiveClass: 'swiper-pagination-customer-bullet-active',
+					}}
+					onSlideChange={(swiper) => {
+						cacheReadedPreviewHandler(swiper.activeIndex)
+					}}
+					onInit={(swiper) => {
+						cacheReadedPreviewHandler(swiper.activeIndex)
 					}}
 				>
 						{
@@ -57,7 +89,9 @@ const FeaturePreview = () => {
 						}
 						<div className="swiper-pagination"></div>
 				</Swiper>
-				<button className='nextButton'>Next</button>
+				<button className={`normal_button ${ isReaded ? 'button_active': 'nextButton'}`}
+					onClick={onTapButtonHandler}
+				>Next</button>
 			</div>
 		</>
 	);
