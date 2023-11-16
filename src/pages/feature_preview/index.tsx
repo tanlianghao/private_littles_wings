@@ -46,7 +46,7 @@ const FeaturePreview = () => {
 			return;
 		}
 
-		navigator('/register/account');
+		navigator('/login');
 	}
 
 	useEffect(() => {
