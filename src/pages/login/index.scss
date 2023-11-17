@@ -1,3 +1,10 @@
+@import '../common.scss';
+
+@mixin line-style {
+  height: 1px;
+  background: #8B868833;
+}
+
 .head_main{
   position: relative;
   height: 259px;
@@ -19,6 +26,100 @@
     p {
       font-size: 14px;
       color: gray;
+    }
+  }
+}
+.form_main {
+  margin: auto 12px;
+  margin-top: 14px;
+  .form-margin {
+    margin-bottom: 20px;
+  }
+  .forgot_password{
+    margin-top: 3px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: right;
+  }
+  .login-button {
+    @include button-normal;
+    width: 246px;
+    height: 45px;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+}
+.divide-line{
+  font: {
+    size: 11px;
+    weight: 400;
+  }
+  display: flex;
+  align-items: center;
+  line-height: 16.5px;
+  margin-top: 11px;
+  &::before {
+    content: "";
+    display: inline-block;
+    flex: 1;
+    margin-right: 10px;
+    @include line-style;
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    flex: 1;
+    margin-left: 10px;
+    @include line-style;
+  }
+}
+.account-main {
+  margin-left: 3px;
+  .account-buttons {
+    margin-top: 10px;
+    height: 56px;
+    width: 335px;
+    box-sizing: border-box;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #8B868833;
+    font: {
+      size: 16px;
+      width: 400;
+    }
+    border-radius:10px;
+    text-align: center;
+    span {
+      display: inline-block;
+      margin-right: 10px;
+      width: 24px;
+      height: 24px;
+      background-size: 24px 24px;
+    }
+    .facebook-icon{
+      background-image: url('../../assets/login/facebook.png');
+    }
+    .google-icon {
+      background-image: url('../../assets/login/google.png');
+    }
+  }
+  .account-tip {
+    font: {
+      size: 14px;
+      weight: 400;
+    }
+    line-height: 20px;
+    color: #25131A;
+    margin-top: 19px;
+    text-align: center;
+    span {
+      font-weight: 600;
+      color: #808080;
+      border-bottom: 1px solid #25131A;
     }
   }
 }

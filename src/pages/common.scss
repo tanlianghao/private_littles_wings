@@ -1,0 +1,9 @@
+@mixin button-normal {
+    background: #808080;
+    border-radius: 15px;
+    color: #EEEEEE;
+    font: {
+        size: 18px;
+        weight: 400;
+    };
+}

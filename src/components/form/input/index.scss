@@ -1,0 +1,26 @@
+.input-main {
+    height: 56px;
+    width: 335px;
+    border: 1px solid #8B868880;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 16px 20px 16px 20px;
+    box-sizing: border-box;
+    .normal-input {
+        border: none;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 400;
+        color: #25131A80;
+        &:focus {
+            outline: none;
+        }
+    }
+    img {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+    }
+}
