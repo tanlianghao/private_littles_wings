@@ -1,24 +1,48 @@
-import React from 'react';
-import './index.scss';
-import CustomInput from 'src/components/form/input';
+import React, {useState} from 'react';
+import CustomInput, { FormInputs } from 'src/components/form/input';
 import userNameIcon from '@assets/login/person.png';
 import passwordIcon from '@assets/login/password_1.png';
 
+import {useForm, SubmitHandler} from 'react-hook-form';
+
+import './index.scss';
+
+
+
 export default function LoginPage() {
+  const { handleSubmit, control, watch } = useForm<FormInputs>({
+    defaultValues: {
+      userName: '',
+      password: ''
+    }
+  });
+
+  const [canSubmit, setCanSubmit] = useState(false);
+
+
   // 点击忘记密码操作
   const handleForgotPassword = () => {
     console.log('handleForgotPassword');
   };
 
   // 点击登录逻辑
-  const handleLogin = () => {
-    console.log('handleLogin');
+  const handleLogin: SubmitHandler<FormInputs> = (data, e) => {
+    e.preventDefault();
+    console.log('handleLogin', data);
   }
 
   // 注册账号
   const registerAccount = () => {
     console.log('registerAccount');
   }
+
+  React.useEffect(() => {
+    const subscription = watch((values, {name, type}) => {
+      let isValid = Object.values(values).every((item) => item !== "");
+      setCanSubmit(isValid);
+    });
+    return () => subscription.unsubscribe();
+  }, [watch])
 
   return (<>
     <div>
@@ -30,13 +54,13 @@ export default function LoginPage() {
       </div>
       <div className='form_main'>
         <div className='form-margin'>
-          <CustomInput iconPath={userNameIcon} hintText='Enter Username' formKey='userName' />
+          <CustomInput iconPath={userNameIcon} hintText='Enter Username' name='userName' control={control}/>
         </div>
         <div className='form-margin'>
-          <CustomInput iconPath={passwordIcon} hintText='Enter Password' formKey='password' />
+          <CustomInput iconPath={passwordIcon} hintText='Enter Password' name='password' control={control}/>
         </div>
         <div className='forgot_password' onClick={handleForgotPassword}>Forgot Password ?</div>
-        <button className='login-button' onClick={handleLogin}>Login</button>
+        <button className={canSubmit ? 'login-button':'login-button disable-button'} onClick={handleSubmit(handleLogin)}>Login</button>
       </div>
       <span className='divide-line'>Or</span>
       <div className='account-main'>
