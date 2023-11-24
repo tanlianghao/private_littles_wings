@@ -1,0 +1,18 @@
+.nav-body{
+    padding-top: 26px;
+    padding-bottom: 21px;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    justify-content: space-between;
+    .arrow-left {
+        width: 22px;
+        height: 22px;
+    }
+    span {
+        display: block;
+        font-size: 22px;
+        color:rgba(37, 19, 26, 1);
+        font-weight: 600;
+    }
+}

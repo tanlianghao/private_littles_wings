@@ -4,6 +4,7 @@ import React from "react";
 import SplashScreen from "./pages/splash_screen/index";
 import FeaturePreview from "./pages/feature_preview/index";
 import LoginPage from "./pages/login";
+import SignUp from "./pages/sign_up";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     {
         path: "/login",
         element: <LoginPage/>
+    },
+    {
+        path: '/sign/up',
+        element: <SignUp/>
     }
 ]);
 

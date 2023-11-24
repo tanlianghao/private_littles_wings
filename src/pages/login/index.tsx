@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import CustomInput, { FormInputs } from 'src/components/form/input';
+import { useNavigate } from 'react-router-dom';
+import CustomInput from 'src/components/form/input';
 import userNameIcon from '@assets/login/person.png';
 import passwordIcon from '@assets/login/password_1.png';
 
@@ -8,6 +9,10 @@ import {useForm, SubmitHandler} from 'react-hook-form';
 import './index.scss';
 
 
+interface FormInputs {
+  userName: string,
+  password: string,
+}
 
 export default function LoginPage() {
   const { handleSubmit, control, watch } = useForm<FormInputs>({
@@ -18,6 +23,7 @@ export default function LoginPage() {
   });
 
   const [canSubmit, setCanSubmit] = useState(false);
+  const navigator = useNavigate();
 
 
   // 点击忘记密码操作
@@ -33,7 +39,7 @@ export default function LoginPage() {
 
   // 注册账号
   const registerAccount = () => {
-    console.log('registerAccount');
+    navigator('/sign/up');
   }
 
   React.useEffect(() => {

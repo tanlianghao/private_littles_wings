@@ -3,19 +3,15 @@ import { useController, UseControllerProps } from 'react-hook-form';
 
 import './index.scss';
 
-interface InputProps {
+export interface InputProps {
   iconPath: string,
   hintText: string,
   name: string,
   isSercet?: boolean
 }
 
-export interface FormInputs {
-  userName: string,
-  password: string,
-}
 
-export default function CustomInput(props: InputProps & UseControllerProps<FormInputs>) {
+export default function CustomInput(props: InputProps & UseControllerProps<any>) {
   const {iconPath, hintText, ...reset} = props;
   const {field} = useController(reset);
   return (<>
