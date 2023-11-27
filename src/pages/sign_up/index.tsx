@@ -8,6 +8,7 @@ import CustomInput, { InputProps } from 'src/components/form/input';
 import profileImg from '@assets/login/Profile.png';
 import messageImg from '@assets/login/Message.png';
 import lockImg from '@assets/login/Lock.png';
+import AccountComponents from 'src/components/accounts_common';
 
 interface SignUpData {
 	fullName: string,
@@ -15,6 +16,7 @@ interface SignUpData {
 	password: string,
 	confirmPassword: string
 }
+const titleConst = 'Sign up';
 
 export default function SignUp() {
 	const formDataList: Array<InputProps> = [
@@ -47,10 +49,14 @@ export default function SignUp() {
 			confirmPassword: ''
 		}
 	});
+	
+	const buttonHandler = () => {
+		console.log('buttonHandler')
+	}
   return (<>
     <div className='sign-up-body'>
 			<NavBar></NavBar>
-			<h1>Sign Up</h1>
+			<h1>{titleConst}</h1>
 			<ul>
 				{
 					formDataList.map((item, index) => {
@@ -60,6 +66,10 @@ export default function SignUp() {
 					})
 				}
 			</ul>
+			<button onClick={buttonHandler} className='signuptap'>{titleConst}</button>
+			<AccountComponents>
+				<p className='account-tip'>Already have a account ? <span>Login</span></p>
+			</AccountComponents>
 			<div className='bg-position'></div>
     </div>
   </>);

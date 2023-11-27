@@ -7,6 +7,7 @@ import passwordIcon from '@assets/login/password_1.png';
 import {useForm, SubmitHandler} from 'react-hook-form';
 
 import './index.scss';
+import AccountComponents from 'src/components/accounts_common';
 
 
 interface FormInputs {
@@ -68,18 +69,9 @@ export default function LoginPage() {
         <div className='forgot_password' onClick={handleForgotPassword}>Forgot Password ?</div>
         <button className={canSubmit ? 'login-button':'login-button disable-button'} onClick={handleSubmit(handleLogin)}>Login</button>
       </div>
-      <span className='divide-line'>Or</span>
-      <div className='account-main'>
-        <button className='account-buttons'>
-          <span className='facebook-icon'></span>
-          Login with Facebook
-        </button>
-        <button className='account-buttons'>
-          <span className='google-icon'></span>
-          Login with Google
-        </button>
+      <AccountComponents>
         <p className='account-tip'>Don’t have an account? <span onClick={registerAccount}>Signup</span></p>
-      </div>
+      </AccountComponents>
     </div>
   </>);
 }
