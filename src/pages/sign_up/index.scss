@@ -14,17 +14,6 @@ ul {
     }
 }
 
-.bg-position{
-    position: absolute;
-    top: 2px;
-    left: -90px;
-    width: 189px;
-    height: 174px;
-    border-radius: 100%;
-    background: radial-gradient(rgba(185, 218, 251, 0.5) 0%, transparent 70%) no-repeat;
-    z-index: -1;
-}
-
 .signuptap{
     @include button-normal;
     margin-top: 38px;

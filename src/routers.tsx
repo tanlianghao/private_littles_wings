@@ -5,6 +5,7 @@ import SplashScreen from "./pages/splash_screen/index";
 import FeaturePreview from "./pages/feature_preview/index";
 import LoginPage from "./pages/login";
 import SignUp from "./pages/sign_up";
+import VerificationCode from "./pages/verification_code";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     {
         path: '/sign/up',
         element: <SignUp/>
+    },
+    {
+        path: '/verification/code',
+        element: <VerificationCode />
     }
 ]);
 

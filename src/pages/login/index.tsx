@@ -36,6 +36,7 @@ export default function LoginPage() {
   const handleLogin: SubmitHandler<FormInputs> = (data, e) => {
     e.preventDefault();
     console.log('handleLogin', data);
+    navigator('/verification/code');
   }
 
   // 注册账号
