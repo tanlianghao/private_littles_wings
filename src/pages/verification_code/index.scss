@@ -1,3 +1,24 @@
 .verificy-main{
   position: relative;
+  .verification-code{
+    margin: 34px 25px 44px 25px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    .code-item{
+      input{
+        width: 55px;
+        height: 55px;
+        border-radius: 15px;
+        border: 1px solid #E4DFDF;
+        font-size: 24px;
+        text-align: center;
+        font-weight: bold;
+        &::placeholder{
+          color: #C4C4C4;
+          font-weight: normal;
+        }
+      }
+    }
+  }
 }
